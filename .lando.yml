@@ -1,0 +1,17 @@
+name: drupwn
+services:
+  cli:
+    type: python:3.7
+    install_dependencies_as_root:
+      - apt-get update -y
+    build:
+       - pip install -r requirements.txt
+       - python setup.py install
+#events:
+#  post-start:
+#    - cli: /script/to/run/cron/jobs
+tooling:
+  drupwn:
+    service: cli
+    cmd: drupwn
+    description: Run drupwn detection script
